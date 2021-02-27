@@ -136,8 +136,8 @@ class AE(StaticGraphEmbedding):
 
         history = self._model.fit_generator(
             generator=batch_generator_ae(S, self._beta, self._n_batch, True),
-            nb_epoch=self._num_iter,
-            samples_per_epoch=S.shape[0] // self._n_batch,
+            epochs=self._num_iter,
+            steps_per_epoch=S.shape[0] // self._n_batch,
             verbose=1,
             # callbacks=[tensorboard]
             # callbacks=[callbacks.TerminateOnNaN()]

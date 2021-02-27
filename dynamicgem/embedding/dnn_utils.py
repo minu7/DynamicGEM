@@ -471,9 +471,9 @@ def get_encoder(node_num, d, n_units, nu1, nu2, activation_fn):
     y[0] = x  # y[0] is assigned the input
     for i in range(K - 1):
         y[i + 1] = Dense(n_units[i], activation=activation_fn,
-                         W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[i])
+                         kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[i])
     y[K] = Dense(d, activation=activation_fn,
-                 W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
+                 kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
     # Encoder model
     encoder = Model(inputs=x, outputs=y[K])
     return encoder
@@ -488,9 +488,9 @@ def get_encoder_dynaernn(node_num, d, n_units, nu1, nu2, activation_fn):
     y[0] = x  # y[0] is assigned the input
     for i in range(K - 1):
         y[i + 1] = Dense(n_units[i], activation=LeakyReLU(),
-                         W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[i])
+                         kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[i])
     y[K] = Dense(d, activation=LeakyReLU(),
-                 W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
+                 kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
     # Encoder model
     encoder = Model(inputs=x, outputs=y[K])
     return encoder
@@ -508,9 +508,9 @@ def get_decoder(node_num, d,
     for i in range(K - 1, 0, -1):
         y_hat[i] = Dense(n_units[i - 1],
                          activation=activation_fn,
-                         W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
+                         kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
     y_hat[0] = Dense(node_num, activation=activation_fn,
-                     W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
+                     kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
     # Output
     x_hat = y_hat[0]  # decoder's output is also the actual output
     # Decoder Model
@@ -530,9 +530,9 @@ def get_decoder_dynaernn(node_num, d,
     for i in range(K - 1, 0, -1):
         y_hat[i] = Dense(n_units[i - 1],
                          activation=LeakyReLU(),
-                         W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
+                         kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
     y_hat[0] = Dense(node_num, activation=LeakyReLU(),
-                     W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
+                     kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
 
     # Output
     x_hat = y_hat[0]  # decoder's output is also the actual output
@@ -561,7 +561,7 @@ def get_lstm_encoder(n_nodes, look_back, d,
     model = Sequential()
     # model.add(Dense(d, input_shape=(look_back, n_nodes),
     #             activation=activation_fn,
-    #              W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+    #              kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
     #              )
     n_rnn_layers = len(n_units)
     return_sequences = bool(n_rnn_layers - 1)
@@ -626,7 +626,7 @@ def get_lstm_decoder(n_nodes, look_back, d,
                       )
 
     # model.add(Dense(n_nodes, activation=activation_fn,
-    #              W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+    #              kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
     #              )
     return model
 
@@ -639,7 +639,7 @@ def get_lstm_encoder_v2(n_nodes, look_back, d,
     model = Sequential()
     # model.add(Dense(d, input_shape=(look_back, n_nodes),
     #             activation=activation_fn,
-    #              W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+    #              kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
     #              )
     n_rnn_layers = len(n_units)
     model.add(LSTM(n_units[0],
@@ -704,7 +704,7 @@ def get_lstm_decoder_v2(n_nodes, look_back, d,
                       )
 
     # model.add(Dense(n_nodes, activation=activation_fn,
-    #              W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+    #              kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
     #              )
     return model
 
@@ -717,7 +717,7 @@ def get_lstm_encoder_v3(n_nodes, look_back, d,
     model = Sequential()
     # model.add(Dense(d, input_shape=(look_back, n_nodes),
     #             activation=activation_fn,
-    #              W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+    #              kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
     #              )
     n_rnn_layers = len(n_units)
     model.add(LSTM(n_units[0],
@@ -747,7 +747,7 @@ def get_lstm_encoder_v3(n_nodes, look_back, d,
                   )
     # model.add(Reshape((1, d)))                        
     model.add(Dense(d, activation=activation_fn,
-                    W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+                    kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
               )
     # model.add(LSTM(d,
     #                return_sequences=False,
@@ -795,7 +795,7 @@ def get_lstm_decoder_v3(n_nodes, look_back, d,
                       )
 
     model.add(Dense(n_nodes, activation=activation_fn,
-                    W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
+                    kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))
               )
     return model
 
@@ -834,9 +834,9 @@ def get_lstm_autoencoder_v2(encoder, decoder, d):
 #     for i in range(K - 1, 0, -1):
 #         y_hat[i] = Dense(n_units[i - 1],
 #                          activation=LeakyReLU(),
-#                          W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
+#                          kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[i + 1])
 #     y_hat[0] = Dense(n_nodes, activation=LeakyReLU(),
-#                      W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
+#                      kernel_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y_hat[1])
 
 #     # Output
 #     x_hat = y_hat[0]  # decoder's output is also the actual output

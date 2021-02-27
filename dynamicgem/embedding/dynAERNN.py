@@ -172,8 +172,8 @@ class DynAERNN(DynamicGraphEmbedding):
                 self._n_prev_graphs,
                 True
             ),
-            nb_epoch=self._num_iter,
-            samples_per_epoch=(
+            epochs=self._num_iter,
+            steps_per_epoch=(
                                       graphs[0].number_of_nodes() * self._n_prev_graphs
                               ) // self._n_batch,
             verbose=1
