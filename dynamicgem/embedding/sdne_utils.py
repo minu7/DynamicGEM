@@ -192,7 +192,7 @@ def get_decoder(node_num, d,
 
 def get_autoencoder(encoder, decoder):
     # Input
-    x = Input(shape=(encoder.layers[0].input_shape[1],))
+    x = Input(shape=(encoder.layers[0].input_shape[0][1],))
     # Generate embedding
     y = encoder(x)
     # Generate reconstruction

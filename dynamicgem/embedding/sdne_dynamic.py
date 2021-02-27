@@ -129,7 +129,7 @@ class SDNE(DynamicGraphEmbedding):
             # Size consistency is being assumed for encoder and decoder, and won't be checked for!
 
             # Check graph for size changes from previous step
-            prev_node_num = encoder_prev.layers[0].input_shape[1]
+            prev_node_num = encoder_prev.layers[0].input_shape[0][1]
             # Note: We only assume node addition. No nodes should be deleted from the graph at any time step.
             if(self._node_num > prev_node_num):
                 n_units_prev = [encoder_prev.layers[i].output_shape[1] for i in range(len(encoder_prev.layers))]
