@@ -239,7 +239,7 @@ class SDNE(DynamicGraphEmbedding):
             return KBack.sum(KBack.square(y_pred), axis=-1).reshape([min_batch_size, 1]) * y_true
 
         # Model
-        self._model = Model(input=x_in, output=[x_diff1, x_diff2, y_diff])
+        self._model = Model(inputs=x_in, outputs=[x_diff1, x_diff2, y_diff])
         sgd = SGD(lr=self._xeta, decay=1e-5, momentum=0.99, nesterov=True)
         # adam = Adam(lr=self._xeta, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
         self._model.compile(optimizer=sgd, loss=[weighted_mse_x, weighted_mse_x, weighted_mse_y], loss_weights=[1, 1, self._alpha])
