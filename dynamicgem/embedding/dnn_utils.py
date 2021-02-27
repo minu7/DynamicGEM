@@ -802,7 +802,7 @@ def get_lstm_decoder_v3(n_nodes, look_back, d,
 
 def get_lstm_autoencoder_v2(encoder, decoder, d):
     # Input
-    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[2]))
+    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[0][2]))
     # Generate embedding
     try:
         y = encoder(x)
@@ -848,7 +848,7 @@ def get_lstm_autoencoder_v2(encoder, decoder, d):
 
 def get_lstm_autoencoder(encoder, decoder):
     # Input
-    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[2]))
+    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[0][2]))
     # Generate embedding
     y = encoder(x)
     # Generate reconstruction
