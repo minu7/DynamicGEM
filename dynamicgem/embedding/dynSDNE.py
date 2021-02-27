@@ -89,7 +89,7 @@ class DynSDNE(DynamicGraphEmbedding):
         config.gpu_options.per_process_gpu_memory_fraction = 0.25
          
         # Create a session with the above options specified.
-        KBack.tensorflow_backend.set_session(tf.Session(config=config))
+        tf.compat.v1.keras.backend.set_session(tf.Session(config=config))
         ###################################
 
         if not graph and not edge_f:

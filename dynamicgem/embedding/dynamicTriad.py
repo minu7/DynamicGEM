@@ -180,7 +180,7 @@ class dynamicTriad(StaticGraphEmbedding):
         # sess = tf_debug.LocalCLIDebugWrapperSession(sess) 
 
         # Create a session with the above options specified.
-        KBack.tensorflow_backend.set_session(sess)
+        tf.compat.v1.keras.backend.set_session(sess)
 
         TrainModel = self.load_trainmod(self._trainmod)
         Dataset = self.load_datamod(self._datasetmod)

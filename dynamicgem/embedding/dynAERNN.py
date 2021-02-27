@@ -85,8 +85,8 @@ class DynAERNN(DynamicGraphEmbedding):
         # Create a tensorflow debugger wrapper
         # sess = tf_debug.LocalCLIDebugWrapperSession(sess)
         # Create a session with the above options specified.
-        KBack.tensorflow_backend.set_session(tf.Session(config=config))
-        # KBack.tensorflow_backend.set_session(sess)
+        tf.compat.v1.keras.backend.set_session(tf.Session(config=config))
+        # tf.compat.v1.keras.backend.set_session(sess)
         ###################################
 
         # Generate encoder, decoder and autoencoder
