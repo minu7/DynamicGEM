@@ -123,8 +123,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
                                       sbm_graph._pos, 
                                       nodelist=chngnodes, 
                                       node_color='r', 
-                                      node_size=80, 
-                                      with_labels=False)
+                                      node_size=80)
     edgelist=sbm_graph._graph.edges(chngnodes) 
     nx.draw_networkx_edges(sbm_graph._graph,sbm_graph._pos,edgelist=edgelist, arrows=False,width=1,alpha=0.5,edge_color='r')
     nodes_draw.set_edgecolor('k')
@@ -152,8 +151,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
                                       sbm_graph._pos, 
                                       nodelist=chngnodes, 
                                       node_color='r', 
-                                      node_size=80, 
-                                      with_labels=False)
+                                      node_size=80)
     nodes_draw.set_edgecolor('k')
     edgelist=sbm_graph._graph.edges(chngnodes) 
     nx.draw_networkx_edges(sbm_graph._graph,sbm_graph._pos,edgelist=edgelist, arrows=False,width=1,alpha=0.5,edge_color='r')
@@ -185,8 +183,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
                                       graph_old._pos, 
                                       nodelist=chngnodes, 
                                       node_color='r', 
-                                      node_size=80, 
-                                      with_labels=False)
+                                      node_size=80)
     nodes_draw.set_edgecolor('k')
     # edgelist=sbm_graph._graph.edges(chngnodes) 
     # nx.draw_networkx_edges(sbm_graph._graph,sbm_graph._pos,edgelist=edgelist, arrows=False,width=1,alpha=0.5,edge_color='r')

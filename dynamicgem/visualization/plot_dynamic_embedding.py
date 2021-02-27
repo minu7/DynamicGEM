@@ -31,8 +31,7 @@ def plot_single_step(node_pos, graph, node_labels):
         pos[i] = node_pos[i, :]
 
     # draw nodes
-    nx.draw_networkx_nodes(graph, pos, nodelist=range(node_num), node_color=node_colors, node_size=20,
-                           with_labels=False)
+    nx.draw_networkx_nodes(graph, pos, nodelist=range(node_num), node_color=node_colors, node_size=20)
     # draw all edges
     nx.draw_networkx_edges(graph, pos, width=0.1, arrows=False, alpha=0.8)
 

@@ -57,12 +57,12 @@ def drawGraph(node_num, community_num, central_measure, topK, dc_id):
                 nodelist[i].append(j)
 
     for i in range(my_graph._community_num):
-        nx.draw_networkx_nodes(G, pos, nodelist=nodelist[i], node_color=node_colors[i], node_size=40, with_labels=False)
+        nx.draw_networkx_nodes(G, pos, nodelist=nodelist[i], node_color=node_colors[i], node_size=40)
         nx.draw_networkx_edges(G, pos, width=0.1, arrows=False, alpha=0.8)
 
     for i in centralNodes:
         nodes_draw = nx.draw_networkx_nodes(G, pos, nodelist=[i], node_color=node_colors[my_graph._node_community[i]],
-                                            node_size=500, with_labels=False)
+                                            node_size=500)
         nodes_draw.set_edgecolor('w')
 
     labels = {}

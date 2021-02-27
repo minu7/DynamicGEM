@@ -85,16 +85,14 @@ def plot_single_step(node_pos, graph_info, dyn_changed_node):
                                         pos,
                                         nodelist=unchanged_nodes,
                                         node_color=[node_colors[p] for p in unchanged_nodes],
-                                        node_size=40,
-                                        with_labels=False)
+                                        node_size=40)
     nodes_draw.set_edgecolor('w')
 
     nodes_draw = nx.draw_networkx_nodes(graph_info[0],
                                         pos,
                                         nodelist=dyn_changed_node,
                                         node_color='r',
-                                        node_size=80,
-                                        with_labels=False)
+                                        node_size=80)
 
 
 #     nodes_draw.set_edgecolor('k')

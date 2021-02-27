@@ -84,8 +84,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
     nodes_draw=nx.draw_networkx_nodes(sbm_graph._graph,pos, 
                                       nodelist=perturb_nodes, 
                                       node_color='r', 
-                                      node_size=50, 
-                                      with_labels=False)
+                                      node_size=50)
     nodes_draw.set_edgecolor('k')
     nx.draw_networkx_labels(sbm_graph._graph,pos,font_size=8)
     
@@ -110,8 +109,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
     nodes_draw=nx.draw_networkx_nodes(sbm_graph._graph,pos, 
                                       nodelist=perturb_nodes, 
                                       node_color='r', 
-                                      node_size=50, 
-                                      with_labels=False)
+                                      node_size=50)
     nodes_draw.set_edgecolor('k')
 
     nodes=[i for i in range(n) if sbm_graph._node_community[i] == community_id ]
@@ -129,8 +127,7 @@ def diminish_community_v2(sbm_graph, community_id, nodes_to_purturb, chngnodes):
     nodes_draw=nx.draw_networkx_nodes(sbm_graph._graph,pos,
                                       nodelist=chngnodes, 
                                       node_color='r', 
-                                      node_size=50, 
-                                      with_labels=False)
+                                      node_size=50)
     nodes_draw.set_edgecolor('k')
     
     if not os.path.exists('./figures'):

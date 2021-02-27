@@ -215,8 +215,7 @@ class SBMGraph(object):
                                       pos, 
                                       nodelist=chngnodes, 
                                       node_color='r', 
-                                      node_size=80, 
-                                      with_labels=False)
+                                      node_size=80)
         nodes_draw.set_edgecolor('k')
         self._pos=pos
         return self._graph, self._chngnodes        
