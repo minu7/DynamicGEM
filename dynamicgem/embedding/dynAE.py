@@ -80,7 +80,7 @@ class DynAE(DynamicGraphEmbedding):
         t1 = time()
         ###################################
         # TensorFlow wizardry
-        config = tf.ConfigProto()
+        config = tf.compat.v1.ConfigProto()
         # Don't pre-allocate memory; allocate as-needed
         config.gpu_options.allow_growth = True
         # Only allow a total of half the GPU memory to be allocated
