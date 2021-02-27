@@ -802,7 +802,7 @@ def get_lstm_decoder_v3(n_nodes, look_back, d,
 
 def get_lstm_autoencoder_v2(encoder, decoder, d):
     # Input
-    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[0][2]))
+    x = Input(shape=(encoder.layers[0].input_shape[1], encoder.layers[0].input_shape[2]))
     # Generate embedding
     try:
         y = encoder(x)
@@ -848,7 +848,7 @@ def get_lstm_autoencoder_v2(encoder, decoder, d):
 
 def get_lstm_autoencoder(encoder, decoder):
     # Input
-    x = Input(shape=(encoder.layers[0].input_shape[0][1], encoder.layers[0].input_shape[0][2]))
+    x = Input(shape=(encoder.layers[0].input_shape[1], encoder.layers[0].input_shape[2]))
     # Generate embedding
     y = encoder(x)
     # Generate reconstruction
@@ -864,7 +864,7 @@ def get_aelstm_autoencoder(ae_encoders, lstm_encoder, ae_decoder):
     # Input
     x_in = Input(shape=(inp_size,))
     for enc_idx, ae_enc in enumerate(ae_encoders):
-        ae_inp_size = ae_encoders[enc_idx].layers[0].input_shape[0][1]
+        ae_inp_size = ae_encoders[enc_idx].layers[0].input_shape[1]
         x_i = Lambda(
             lambda x: x[:, enc_idx * ae_inp_size:(enc_idx + 1) * ae_inp_size]
         )(x_in)

@@ -101,7 +101,7 @@ class DynAERNN(DynamicGraphEmbedding):
                 self._nu2,
                 self._actfn
             )
-            self._aeencoders[i].name = "ae_encoder_%d" % i
+            # self._aeencoders[i].name = "ae_encoder_%d" % i
         self._lstmencoder = get_lstm_encoder(
             self._d,
             self._n_prev_graphs,
@@ -113,7 +113,7 @@ class DynAERNN(DynamicGraphEmbedding):
             None,
             False
         )
-        self._lstmencoder.name = "lstm_encoder"
+        # self._lstmencoder.name = "lstm_encoder"
         self._aedecoder = get_decoder_dynaernn(
             self._node_num,
             self._d,
@@ -122,7 +122,7 @@ class DynAERNN(DynamicGraphEmbedding):
             self._nu2,
             self._actfn
         )
-        self._aedecoder.name = "decoder"
+        # self._aedecoder.name = "decoder"
         self._autoencoder = get_aelstm_autoencoder(
             self._aeencoders,
             self._lstmencoder,
