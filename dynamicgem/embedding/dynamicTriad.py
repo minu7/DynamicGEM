@@ -174,7 +174,7 @@ class dynamicTriad(StaticGraphEmbedding):
         config.gpu_options.per_process_gpu_memory_fraction = 0.2
 
         # Create a session to pass the above configuration
-        sess = tf.Session(config=config)
+        sess = tf.compat.v1.Session(config=config)
 
         # Create a tensorflow debugger wrapper
         # sess = tf_debug.LocalCLIDebugWrapperSession(sess) 

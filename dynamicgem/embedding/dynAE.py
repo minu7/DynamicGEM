@@ -86,7 +86,7 @@ class DynAE(DynamicGraphEmbedding):
         # Only allow a total of half the GPU memory to be allocated
         config.gpu_options.per_process_gpu_memory_fraction = 0.1
         # Create a session with the above options specified.
-        tf.compat.v1.keras.backend.set_session(tf.Session(config=config))
+        tf.compat.v1.keras.backend.set_session(tf.compat.v1.Session(config=config))
         ###################################
         # Generate encoder, decoder and autoencoder
         self._num_iter = self._n_iter
