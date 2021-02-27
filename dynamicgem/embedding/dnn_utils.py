@@ -475,7 +475,7 @@ def get_encoder(node_num, d, n_units, nu1, nu2, activation_fn):
     y[K] = Dense(d, activation=activation_fn,
                  W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
     # Encoder model
-    encoder = Model(input=x, output=y[K])
+    encoder = Model(inputs=x, outputs=y[K])
     return encoder
 
 
@@ -492,7 +492,7 @@ def get_encoder_dynaernn(node_num, d, n_units, nu1, nu2, activation_fn):
     y[K] = Dense(d, activation=LeakyReLU(),
                  W_regularizer=Reg.l1_l2(l1=nu1, l2=nu2))(y[K - 1])
     # Encoder model
-    encoder = Model(input=x, output=y[K])
+    encoder = Model(inputs=x, outputs=y[K])
     return encoder
 
 
@@ -514,7 +514,7 @@ def get_decoder(node_num, d,
     # Output
     x_hat = y_hat[0]  # decoder's output is also the actual output
     # Decoder Model
-    decoder = Model(input=y, output=x_hat)
+    decoder = Model(inputs=y, outputs=x_hat)
     return decoder
 
 
@@ -537,7 +537,7 @@ def get_decoder_dynaernn(node_num, d,
     # Output
     x_hat = y_hat[0]  # decoder's output is also the actual output
     # Decoder Model
-    decoder = Model(input=y, output=x_hat)
+    decoder = Model(inputs=y, outputs=x_hat)
     return decoder
 
 
@@ -549,7 +549,7 @@ def get_autoencoder(encoder, decoder):
     # Generate reconstruction
     x_hat = decoder(y)
     # Autoencoder Model
-    autoencoder = Model(input=x, output=[x_hat, y])
+    autoencoder = Model(inputs=x, outputs=[x_hat, y])
     return autoencoder
 
 
@@ -816,7 +816,7 @@ def get_lstm_autoencoder_v2(encoder, decoder, d):
         pdb.set_trace()
 
         # Autoencoder Model
-    autoencoder = Model(input=x, output=[x_hat, y])
+    autoencoder = Model(inputs=x, outputs=[x_hat, y])
     return autoencoder
 
 
@@ -841,7 +841,7 @@ def get_lstm_autoencoder_v2(encoder, decoder, d):
 #     # Output
 #     x_hat = y_hat[0]  # decoder's output is also the actual output
 #     # Decoder Model
-#     decoder = Model(input=y, output=x_hat)
+#     decoder = Model(inputs=y, outputs=x_hat)
 
 #     return decoder    
 
@@ -860,7 +860,7 @@ def get_lstm_autoencoder(encoder, decoder):
 
 def get_aelstm_autoencoder(ae_encoders, lstm_encoder, ae_decoder):
     y_enc = [None] * len(ae_encoders)
-    inp_size = sum([encoder.layers[0].input_shape[1] for encoder in ae_encoders])
+    inp_size = sum([encoder.layers[0].input_shape[0][1] for encoder in ae_encoders])
     # Input
     x_in = Input(shape=(inp_size,))
     for enc_idx, ae_enc in enumerate(ae_encoders):
@@ -882,7 +882,7 @@ def get_aelstm_autoencoder(ae_encoders, lstm_encoder, ae_decoder):
     # Generate reconstruction
     x_hat = ae_decoder(y)
     # Autoencoder Model
-    autoencoder = Model(input=x_in, output=[x_hat, y])
+    autoencoder = Model(inputs=x_in, outputs=[x_hat, y])
     return autoencoder
 
 
