@@ -121,7 +121,7 @@ def expLP(graphs,
                                               is_undirected=is_undirected,
                                               sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t - T_min,
             np.mean(MAP[t - T_min]),
             np.std(MAP[t - T_min]),
@@ -173,7 +173,7 @@ def exp_changedLP(graphs,
                                                        is_undirected=is_undirected,
                                                        sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t - T_min,
             np.mean(MAP[t - T_min]),
             np.std(MAP[t - T_min]),
@@ -331,7 +331,7 @@ def expstatic_changedLP(dynamic_sbm_series,
                                                        is_undirected=is_undirected,
                                                        sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t,
             np.mean(MAP[t]),
             np.std(MAP[t]),
@@ -382,7 +382,7 @@ def expstaticLP(dynamic_sbm_series,
                                               is_undirected=is_undirected,
                                               sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t,
             np.mean(MAP[t]),
             np.std(MAP[t]),
@@ -433,7 +433,7 @@ def expstaticLP_TIMERS(dynamic_sbm_series,
                                                      is_undirected=is_undirected,
                                                      sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t,
             np.mean(MAP[t]),
             np.std(MAP[t]),
@@ -485,7 +485,7 @@ def expstaticLP_TRIAD(dynamic_sbm_series,
                                                      is_undirected=is_undirected,
                                                      sampling_scheme=sampling_scheme)
         summ_file = open('%s%s.dlpsumm' % (res_pre, m_summ), 'a')
-        summ_file.write('\tt=%d%f/%f\t%s\n' % (
+        summ_file.write('\tt=%d %f/%f \t%s\n' % (
             t,
             np.mean(MAP[t]),
             np.std(MAP[t]),
