@@ -38,12 +38,13 @@ for curr_folder in sorted(folder_names):	# Go through all the years
 					author_names = line.split(':')[1]
 					author_namesL = re.split('\(.*\)|\(.*$|[0-9,()]| and |Jr\.', author_names) # Get list of authors
 					author_namesL = [author_namesL[i].strip() for i in range(len(author_namesL))]
-					author_namesL = filter(None, author_namesL)#[a for a in author_namesL  if a]
+					author_namesL = [a for a in author_namesL  if a]
 					for author in author_namesL:	# Add the author in the dictionary and corresponding node in the graph
 						if author not in author_namesD:
 							author_namesD[author] = author_id
 							G.add_node(author_id)
 							author_id += 1
+					# print(author_namesL)
 					for i in range(len(author_namesL)): # Connect all the authors in the current paper
 						for j in range(i+1, len(author_namesL)):
 							author_i = author_namesD[author_namesL[i]]

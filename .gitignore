@@ -7,9 +7,6 @@ build/
 *.egg-info
 *.gz
 *.tar
-/test_data/
-test_data/
-/test_data
 /results*/
 results*/
 sbm_cd/
@@ -32,14 +29,11 @@ intermediate/*
 /results*
 results/
 results*
-/test_data/
-test_data/
 output_v0/
 figures/
 backup/
 *.pdf
-*.pickle
-*.gpickle
+
 *.dlpsumm
 =======
 # THIS FILE IS GENERATED FROM DGEM SETUP.PY
