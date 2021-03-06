@@ -475,7 +475,7 @@ if __name__ == '__main__':
             n_units=[500, 300, ],
             rho=0.3,
             n_iter=epochs,
-            xeta=1e-8,
+            xeta=0.00001,
             n_batch=int(args.samples / 10),
             modelfile=['./intermediate/enc_modelhep.json', './intermediate/dec_modelhep.json'],
             weightfile=['./intermediate/enc_weightshep.hdf5', './intermediate/dec_weightshep.hdf5'],
